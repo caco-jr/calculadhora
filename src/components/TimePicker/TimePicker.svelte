@@ -1,22 +1,24 @@
 <script>
   import Select from "svelte-select";
 
+  export let className = "";
   export let time;
 
-  const hours = Array.from(Array(24).keys()).map(item => ({
+  const hoursList = Array.from(Array(24).keys()).map(item => ({
     value: item,
     label: `${item}`,
-    type: "hour"
+    type: "hours"
   }));
 
-  const minutes = Array.from(Array(60).keys()).map(item => ({
+  const minutesList = Array.from(Array(60).keys()).map(item => ({
     value: item,
     label: `${item}`,
-    type: "minute"
+    type: "minutes"
   }));
 
-  let selectedHour = time && hours.find(item => item.value === time.hour);
-  let selectedMinute = time && minutes.find(item => item.value === time.minute);
+  let selectedHour = time && hoursList.find(item => item.value === time.hours);
+  let selectedMinute =
+    time && minutesList.find(item => item.value === time.minutes);
 
   function handleSelect(selectedVal) {
     const { value, type } = selectedVal.detail;
@@ -31,14 +33,14 @@
   }
 </style>
 
-<div class="c-timepicker">
+<div class={`c-timepicker ${className}`}>
   <Select
-    items={hours}
+    items={hoursList}
     bind:selectedValue={selectedHour}
     on:select={handleSelect} />
 
   <Select
-    items={minutes}
+    items={minutesList}
     bind:selectedValue={selectedMinute}
     on:select={handleSelect} />
 </div>
