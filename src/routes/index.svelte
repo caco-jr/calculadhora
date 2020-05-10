@@ -1,10 +1,13 @@
 <script>
+  import { difference, convertTime } from "../lib/date.js";
   import TimePicker from "../components/TimePicker";
 
   let entryTime = { hours: 8, minutes: 30 };
   let entryLunchTime = { hours: 12, minutes: 30 };
   let backLunchTime = { hours: 13, minutes: 30 };
   let finishTime = { hours: 19, minutes: 30 };
+  $: timeToFinish = handleTimeToFinish(entryTime);
+
   $: fullTimeWorked = handleFullTimeWorked(
     entryTime,
     entryLunchTime,
@@ -12,16 +15,12 @@
     finishTime
   );
 
-  function difference(start, end) {
-    function handleDate({ hours, minutes }) {
-      return new Date().setHours(hours, minutes);
-    }
-
-    const dateDiff = new Date(handleDate(end) - handleDate(start));
+  function handleTimeToFinish(entry) {
+    const date = new Date(convertTime(entry)).addHours(9, 48);
 
     return {
-      hours: dateDiff.getUTCHours(),
-      minutes: dateDiff.getUTCMinutes()
+      hours: date.getHours(),
+      minutes: date.getMinutes()
     };
   }
 
@@ -50,11 +49,13 @@
   <title>Calculadhora | Home</title>
 </svelte:head>
 
-<p>Mudou entrada: {entryTime.hours}h {entryTime.minutes}m</p>
-
 <p style="font-weight:bold; font-size:32px">
   Tempo trabalhado: {fullTimeWorked.hours} horas e {fullTimeWorked.minutes}
   minutos
+</p>
+
+<p style="font-weight:bold; font-size:24px">
+  Horário previsto para finalizar: {timeToFinish.hours}h:{timeToFinish.minutes}min
 </p>
 
 <section class="c-home">
