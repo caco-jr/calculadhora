@@ -28,11 +28,17 @@
   function handleFullTimeWorked(entry, lunch, backLunch, finish) {
     const firstHalf = difference(entry, lunch);
     const secondHalf = difference(backLunch, finish);
+    const hours = firstHalf.hours + secondHalf.hours;
+    const minutes = firstHalf.minutes + secondHalf.minutes;
 
-    return {
-      hours: firstHalf.hours + secondHalf.hours,
-      minutes: firstHalf.minutes + secondHalf.minutes
-    };
+    if (minutes > 59) {
+      return {
+        hours: hours + 1,
+        minutes: minutes - 60
+      };
+    }
+
+    return { hours, minutes };
   }
 </script>
 
