@@ -5,6 +5,12 @@
   let entryLunchTime = { hours: 12, minutes: 30 };
   let backLunchTime = { hours: 13, minutes: 30 };
   let finishTime = { hours: 19, minutes: 30 };
+  $: fullTimeWorked = handleFullTimeWorked(
+    entryTime,
+    entryLunchTime,
+    backLunchTime,
+    finishTime
+  );
 
   function difference(start, end) {
     function handleDate({ hours, minutes }) {
@@ -16,6 +22,16 @@
     return {
       hours: dateDiff.getUTCHours(),
       minutes: dateDiff.getUTCMinutes()
+    };
+  }
+
+  function handleFullTimeWorked(entry, lunch, backLunch, finish) {
+    const firstHalf = difference(entry, lunch);
+    const secondHalf = difference(backLunch, finish);
+
+    return {
+      hours: firstHalf.hours + secondHalf.hours,
+      minutes: firstHalf.minutes + secondHalf.minutes
     };
   }
 </script>
@@ -30,15 +46,35 @@
 
 <p>Mudou entrada: {entryTime.hours}h {entryTime.minutes}m</p>
 
-<p>
-  Diferença de: {difference(entryTime, entryLunchTime).hours} horas e {difference(entryTime, entryLunchTime).minutes}
+<p style="font-weight:bold; font-size:32px">
+  Tempo trabalhado: {fullTimeWorked.hours} horas e {fullTimeWorked.minutes}
   minutos
 </p>
 
 <section class="c-home">
-  <TimePicker bind:time={entryTime} className="c-home__timepicker-entry" />
-  <br />
-  <br />
-  <br />
-  <TimePicker bind:time={entryLunchTime} />
+  <section>
+    <p>Inicio do trabalho</p>
+    <TimePicker bind:time={entryTime} className="c-home__timepicker-entry" />
+  </section>
+
+  <section>
+    <p>Pausa para almoço</p>
+    <TimePicker
+      bind:time={entryLunchTime}
+      className="c-home__timepicker-entryLunch" />
+  </section>
+
+  <section>
+    <p>Volta do almoço</p>
+    <TimePicker
+      bind:time={backLunchTime}
+      className="c-home__timepicker-backLunch" />
+  </section>
+
+  <section>
+    <p>Fim do expediente</p>
+    <TimePicker
+      bind:time={finishTime}
+      className="c-home__timepicker-backLunch" />
+  </section>
 </section>

@@ -6,13 +6,13 @@
 
   const hoursList = Array.from(Array(24).keys()).map(item => ({
     value: item,
-    label: `${item}`,
+    label: `${item}`.padStart(2, "0"),
     type: "hours"
   }));
 
   const minutesList = Array.from(Array(60).keys()).map(item => ({
     value: item,
-    label: `${item}`,
+    label: `${item}`.padStart(2, "0"),
     type: "minutes"
   }));
 
@@ -38,7 +38,6 @@
     items={hoursList}
     bind:selectedValue={selectedHour}
     on:select={handleSelect} />
-
   <Select
     items={minutesList}
     bind:selectedValue={selectedMinute}
