@@ -5,40 +5,71 @@
   let entryTime = { hours: 8, minutes: 30 };
   let entryLunchTime = { hours: 12, minutes: 30 };
   let backLunchTime = { hours: 13, minutes: 30 };
-  let finishTime = { hours: 19, minutes: 30 };
-  $: timeToFinish = handleTimeToFinish(entryTime);
-
-  $: fullTimeWorked = handleFullTimeWorked(
+  let finishTime = { hours: 18, minutes: 20 };
+  $: timeToFinish = handleTimeToFinish(
     entryTime,
     entryLunchTime,
-    backLunchTime,
-    finishTime
+    backLunchTime
   );
 
-  function handleTimeToFinish(entry) {
-    const date = new Date(convertTime(entry)).addHours(9, 48);
+  $: fullTimeWorked = handleFullTimeWorked(entryTime)
+    .again(entryLunchTime)
+    .again(backLunchTime)
+    .finish(finishTime).total;
 
-    return {
+  function handleTimeToFinish(entry, pause1, pauseReturn1) {
+    const datePlus = new Date(convertTime(entry));
+    const breakTime = new Date(convertTime(difference(pause1, pauseReturn1)));
+    datePlus.addHours(breakTime.getHours() + 8, breakTime.getMinutes() + 48);
+
+    const handleTimeObj = date => ({
       hours: date.getHours(),
       minutes: date.getMinutes()
-    };
+    });
+
+    return handleTimeObj(datePlus);
   }
 
-  function handleFullTimeWorked(entry, lunch, backLunch, finish) {
-    const firstHalf = difference(entry, lunch);
-    const secondHalf = difference(backLunch, finish);
-    const hours = firstHalf.hours + secondHalf.hours;
-    const minutes = firstHalf.minutes + secondHalf.minutes;
+  const handleFullTimeWorked = (a, finish) => {
+    let total;
+    let list = [...[a]].flat(Infinity);
+    let diff = [];
 
-    if (minutes > 59) {
-      return {
-        hours: hours + 1,
-        minutes: minutes - 60
-      };
+    if (list.length >= 2 && finish) {
+      while (list.length >= 2) {
+        let cutList = list.splice(0, 2);
+        diff = [...diff, difference(cutList[0], cutList[1])];
+      }
+
+      total = diff.reduce(
+        (accumulator, currentValue) => {
+          const hours = currentValue.hours + accumulator.hours;
+          const minutes = currentValue.minutes + accumulator.minutes;
+
+          if (minutes > 59) {
+            return {
+              hours: hours + 1,
+              minutes: minutes - 60
+            };
+          }
+
+          return {
+            hours,
+            minutes
+          };
+        },
+        { hours: 0, minutes: 0 }
+      );
     }
 
-    return { hours, minutes };
-  }
+    return {
+      total,
+      periods: diff,
+      leftovers: list,
+      again: b => handleFullTimeWorked([...[a], b]),
+      finish: b => handleFullTimeWorked([...[a], b], true)
+    };
+  };
 </script>
 
 <style>
@@ -55,7 +86,7 @@
 </p>
 
 <p style="font-weight:bold; font-size:24px">
-  Horário previsto para finalizar: {timeToFinish.hours}h:{timeToFinish.minutes}min
+  Horário previsto para finalizar: {timeToFinish.hours}h:{`${timeToFinish.minutes}`.padStart(2, '0')}min
 </p>
 
 <section class="c-home">
