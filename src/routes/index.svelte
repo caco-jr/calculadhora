@@ -1,15 +1,6 @@
 <script>
-  import { stores } from "@sapper/app";
-  import UAParser from "ua-parser-js";
   import { difference, convertTime } from "../lib/date.js";
   import TimePicker from "../components/TimePicker";
-
-  // session is passed in server.js
-  const { preloading, page, session } = stores();
-  var parser = new UAParser();
-  parser.setUA($session["user-agent"]);
-
-  let mobile = parser.getResult().device["type"] == "mobile";
 
   let entryTime = { hours: 8, minutes: 30 };
   let entryLunchTime = { hours: 12, minutes: 30 };
@@ -101,17 +92,13 @@
 <section class="c-home">
   <section>
     <p>Inicio do trabalho</p>
-    <TimePicker
-      bind:time={entryTime}
-      isMobile={mobile}
-      className="c-home__timepicker-entry" />
+    <TimePicker bind:time={entryTime} className="c-home__timepicker-entry" />
   </section>
 
   <section>
     <p>Pausa para almoço</p>
     <TimePicker
       bind:time={entryLunchTime}
-      isMobile={mobile}
       className="c-home__timepicker-entryLunch" />
   </section>
 
@@ -119,7 +106,6 @@
     <p>Volta do almoço</p>
     <TimePicker
       bind:time={backLunchTime}
-      isMobile={mobile}
       className="c-home__timepicker-backLunch" />
   </section>
 
@@ -127,7 +113,6 @@
     <p>Fim do expediente</p>
     <TimePicker
       bind:time={finishTime}
-      isMobile={mobile}
       className="c-home__timepicker-backLunch" />
   </section>
 </section>

@@ -3,7 +3,6 @@
 
   export let className = "";
   export let time;
-  export let isMobile;
 
   const hoursList = Array.from(Array(24).keys()).map(item => ({
     value: item,
@@ -35,18 +34,15 @@
 </style>
 
 <div class={`c-timepicker ${className}`}>
-  {#if isMobile}
-    <p>Mobile menu here</p>
-  {:else}
-    <p>Desktop menu here</p>
-  {/if}
-
   <Select
     items={hoursList}
     bind:selectedValue={selectedHour}
+    inputAttributes={{ type: 'number' }}
     on:select={handleSelect} />
+
   <Select
     items={minutesList}
     bind:selectedValue={selectedMinute}
+    inputAttributes={{ type: 'number' }}
     on:select={handleSelect} />
 </div>
