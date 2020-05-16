@@ -37,12 +37,12 @@
   <Select
     items={hoursList}
     bind:selectedValue={selectedHour}
-    inputAttributes={{ type: 'number' }}
+    inputAttributes={{ type: 'time' }}
     on:select={handleSelect} />
 
   <Select
     items={minutesList}
     bind:selectedValue={selectedMinute}
-    inputAttributes={{ type: 'number' }}
+    inputAttributes={{ type: 'time' }}
     on:select={handleSelect} />
 </div>
