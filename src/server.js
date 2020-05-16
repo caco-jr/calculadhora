@@ -11,7 +11,12 @@ polka() // You can also use Express
     'calculadhora',
     compression({ threshold: 0 }),
     sirv('static', { dev }),
-    sapper.middleware()
+    sapper.middleware({
+      // let make device detection possibility, e.g. in <Nav> component
+      session: (req, res) => ({
+        'user-agent': req.headers['user-agent'],
+      }),
+    })
   )
   .listen(PORT, (err) => {
     if (err) console.log('error', err);
