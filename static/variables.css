@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme='default'] {
   /* // --- Complementary Colors */
   --complementary-color-00: #ffffff;
   --complementary-color-01: #f3f5f7;
@@ -113,4 +114,15 @@
   --box-shadow-popout: 0 0 1px 1px var(--gray-40), 0 8px 16px 0 var(--gray-120);
   --box-shadow: var(--box-shadow-normal);
   /* // ---------------------------------- */
+}
+
+[data-theme] {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+[data-theme='light'] {
+  --background-color: #fff;
+  --text-color: #111;
+  --title-color: #111;
 }
