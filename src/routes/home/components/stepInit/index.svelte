@@ -26,7 +26,7 @@
     margin-bottom: 40px;
   }
 
-  .c-button {
+  .ct-init__button {
     background: transparent linear-gradient(180deg, #f17c77 0%, #fb5a53 100%) 0%
       0% no-repeat padding-box;
     border-radius: 42px;
@@ -50,7 +50,7 @@
       <h1 class="ct-init__title">CalculadHora</h1>
       <span class="ct-init__sub-title">Você no controle do seu tempo</span>
 
-      <button class="c-button">Iniciar</button>
+      <button class="ct-init__button">Iniciar</button>
     </section>
   </section>
 
