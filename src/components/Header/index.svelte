@@ -3,6 +3,32 @@
 </script>
 
 <style>
+  @keyframes pulse {
+    0% {
+      will-change: transform;
+    }
+
+    20% {
+      transform: scale(1);
+    }
+
+    40% {
+      transform: scale(1.3);
+    }
+
+    60% {
+      transform: scale(1.1);
+    }
+
+    80% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
   .c-header {
     display: flex;
     justify-content: flex-end;
@@ -13,6 +39,11 @@
     display: inline-flex;
     flex-flow: column;
     text-decoration: none;
+    will-change: unset;
+  }
+
+  .c-header__box:hover {
+    animation: pulse 0.4s forwards;
   }
 
   .c-header__title,
