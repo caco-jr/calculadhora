@@ -35,7 +35,7 @@
       0% no-repeat padding-box;
     border-radius: 42px;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 26px;
     color: #fff;
     padding: 19px 120px;
     border: none;
