@@ -1,5 +1,6 @@
 <script>
   import { STEP_INIT_URI } from "@lib/routesURI";
+  import { fly } from "svelte/transition";
 </script>
 
 <style>
@@ -53,7 +54,10 @@
   <title>CalculadHora</title>
 </svelte:head>
 
-<section class="ct-landing">
+<section
+  class="ct-landing"
+  in:fly={{ x: 300, duration: 500 }}
+  out:fly={{ x: -300, duration: 300 }}>
   <section class="container">
     <section class="ct-landing__content-box">
       <h1 class="ct-landing__title">CalculadHora</h1>
