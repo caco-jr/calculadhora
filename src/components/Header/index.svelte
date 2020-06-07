@@ -1,0 +1,35 @@
+<style>
+  .c-header {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 80px;
+  }
+
+  .c-header__box {
+    display: inline-flex;
+    flex-flow: column;
+  }
+
+  .c-header__title,
+  .c-header__sub-title {
+    color: #fff;
+  }
+
+  .c-header__title {
+    font-size: 26px;
+    font-weight: 900;
+  }
+
+  .c-header__sub-title {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+</style>
+
+<header class="container c-header">
+  <div class="c-header__box">
+    <span class="c-header__title">CalculadHora</span>
+    <span class="c-header__sub-title">Você no controle do seu tempo</span>
+  </div>
+</header>

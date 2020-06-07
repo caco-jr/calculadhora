@@ -1,6 +1,6 @@
 <script>
-  import { difference, convertTime } from "../../../../lib/date";
-  import TimePicker from "../../../../components/TimePicker";
+  import { difference, convertTime } from "@lib/date";
+  import TimePicker from "@components/TimePicker";
 
   let entryTime = { hours: 8, minutes: 30 };
   let entryLunchTime = { hours: 12, minutes: 30 };

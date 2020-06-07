@@ -1,3 +1,7 @@
+<script>
+  import Header from "@components/Header";
+</script>
+
 <style>
   .ct-init {
     min-height: 100vh;
@@ -16,6 +20,8 @@
 </svelte:head>
 
 <section class="ct-init">
+  <Header />
+
   <section class="container">
     <h1 class="ct-init__title">Qual sua carga horária diária?</h1>
   </section>

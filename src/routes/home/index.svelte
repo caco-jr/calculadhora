@@ -1,5 +1,5 @@
 <script>
-  import { STEP_INIT_URI } from "../../lib/routesURI";
+  import { STEP_INIT_URI } from "@lib/routesURI";
 </script>
 
 <style>
