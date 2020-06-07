@@ -49,6 +49,10 @@
   }
 </style>
 
+<svelte:head>
+  <title>CalculadHora</title>
+</svelte:head>
+
 <section class="ct-landing">
   <section class="container">
     <section class="ct-landing__content-box">
