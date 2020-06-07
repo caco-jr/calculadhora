@@ -1,3 +1,7 @@
+<script>
+  import { HOME_URI } from "@lib/routesURI";
+</script>
+
 <style>
   .c-header {
     display: flex;
@@ -8,6 +12,7 @@
   .c-header__box {
     display: inline-flex;
     flex-flow: column;
+    text-decoration: none;
   }
 
   .c-header__title,
@@ -28,8 +33,8 @@
 </style>
 
 <header class="container c-header">
-  <div class="c-header__box">
+  <a class="c-header__box" href={HOME_URI}>
     <span class="c-header__title">CalculadHora</span>
     <span class="c-header__sub-title">Você no controle do seu tempo</span>
-  </div>
+  </a>
 </header>
