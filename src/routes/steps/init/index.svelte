@@ -1,0 +1,1 @@
+<section>Init page</section>
