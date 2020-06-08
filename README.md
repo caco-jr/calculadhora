@@ -2,7 +2,7 @@
 
 The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
 
-Para ver mais do projeto acesse o [link](https://caco-jr.github.io/calculadhora/).
+Para ver mais do projeto acesse o [link](https://calculadhora.app).
 
 ## Getting started
 
