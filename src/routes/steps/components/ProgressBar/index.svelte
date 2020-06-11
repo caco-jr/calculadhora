@@ -14,9 +14,32 @@
   function handleList() {
     return [...Array(totalSteps)].map((_, index) => {
       const active = index <= Number(currentStepNumber);
+      let uri;
+
+      switch (index) {
+        case 0:
+          uri = STEP_INIT_URI;
+          break;
+
+        case 1:
+          uri = STEP_LUNCH_URI;
+          break;
+
+        case 2:
+          uri = STEP_BREAK_URI;
+          break;
+
+        case 3:
+          uri = STEP_RESULT_URI;
+          break;
+
+        default:
+          break;
+      }
 
       return {
-        active
+        active,
+        uri
       };
     });
   }
@@ -78,12 +101,14 @@
 </style>
 
 <section class="c-progress">
-  {#each list as { active }, i}
-    <div class="c-progress__circle" class:c-progress__circle--active={active}>
-      {#if active}
+  {#each list as { active, uri }, i}
+    {#if active}
+      <a href={uri} class="c-progress__circle c-progress__circle--active">
         <LoadSVG name="check" />
-      {/if}
-    </div>
+      </a>
+    {:else}
+      <div class="c-progress__circle" />
+    {/if}
   {/each}
 
   <span class="c-progress__bar" data-current-step={currentStepNumber} />
