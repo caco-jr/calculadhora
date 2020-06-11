@@ -89,12 +89,13 @@
   }
 </style>
 
-<div class={`c-timepicker ${className}`}>
+<div class="c-timepicker" class:className>
   <input
     use:imask={options}
     bind:value={timeString}
     bind:this={timeInputRef}
-    class={`c-timepicker__input`}
+    class:className={`${className}__input`}
+    class="c-timepicker__input"
     name="time"
     type="text"
     inputmode="numeric"
