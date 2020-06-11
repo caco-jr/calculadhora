@@ -1,37 +1,41 @@
 <script>
-  import Select from "svelte-select";
+  import { onMount } from "svelte";
 
-  export let className = "";
+  import { imask } from "svelte-imask";
+
   export let time;
+  export let autoFocus = false;
+  export let className = "";
 
-  const hoursList = Array.from(Array(24).keys()).map(item => ({
-    value: item,
-    label: `${item}`.padStart(2, "0"),
-    type: "hours"
-  }));
+  let timeInputRef;
 
-  const minutesList = Array.from(Array(60).keys()).map(item => ({
-    value: item,
-    label: `${item}`.padStart(2, "0"),
-    type: "minutes"
-  }));
+  const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
 
-  let selectedHour = time && hoursList.find(item => item.value === time.hours);
-  let selectedMinute =
-    time && minutesList.find(item => item.value === time.minutes);
+  const options = {
+    mask: "00:00"
+  };
 
-  function handleSelect(selectedVal) {
-    const { value, type } = selectedVal.detail;
+  let timeString = handleInputValue(time);
 
-    time = { ...time, [type]: value };
+  function complete({ detail: imask }) {
+    handleTimeFormat(imask._value);
   }
 
-  function handleInputValue(time) {
-    return `${time.hours.toString().padStart(2, "0")}:${time.minutes}`;
+  function handleInputValue(timeValue) {
+    if (!timeValue) {
+      return "00:00";
+    }
+
+    return `${timeValue.hours.toString().padStart(2, "0")}:${
+      timeValue.minutes
+    }`;
   }
 
-  function handleChange(event) {
-    const value = event.target.value;
+  function handleTimeFormat(value) {
+    if (timeRegex.test(value)) {
+      console.log("Passou!!!!");
+    }
+
     const separatedValue = value.split(":");
 
     time = {
@@ -40,51 +44,48 @@
       minutes: separatedValue[1]
     };
   }
+
+  function handleAutoFocus() {
+    if (!autoFocus) {
+      return;
+    }
+
+    setTimeout(() => {
+      timeInputRef.focus();
+      timeInputRef.setSelectionRange(timeString.length, timeString.length);
+    }, 500);
+  }
+
+  onMount(() => {
+    handleAutoFocus();
+  });
 </script>
 
 <style>
-  .c-timepicker {
-    display: inline-flex;
+  .c-timepicker__input {
+    max-width: 100%;
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 26px;
   }
 
-  @media (max-width: 767px) {
-    .c-timepicker__mobile {
-      display: inline-flex;
-    }
-
-    .c-timepicker__desktop {
-      display: none;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .c-timepicker__mobile {
-      display: none;
-    }
-
-    .c-timepicker__desktop {
-      display: inline-flex;
-    }
+  .c-timepicker__input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
   }
 </style>
 
 <div class={`c-timepicker ${className}`}>
-  <div class={`c-timepicker__desktop ${className}__desktop`}>
-    <Select
-      items={hoursList}
-      bind:selectedValue={selectedHour}
-      on:select={handleSelect} />
-
-    <Select
-      items={minutesList}
-      bind:selectedValue={selectedMinute}
-      on:select={handleSelect} />
-  </div>
-
-  <div class={`c-timepicker__mobile ${className}__mobile`}>
-    <input
-      type="time"
-      on:change={handleChange}
-      value={handleInputValue(time)} />
-  </div>
+  <input
+    use:imask={options}
+    bind:value={timeString}
+    bind:this={timeInputRef}
+    class={`c-timepicker__input`}
+    name="time"
+    type="text"
+    inputmode="numeric"
+    placeholder="00:00"
+    on:complete={complete} />
 </div>

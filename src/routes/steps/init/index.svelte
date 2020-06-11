@@ -1,19 +1,10 @@
 <script>
-  import { onMount } from "svelte";
   import { fly } from "svelte/transition";
+
+  import TimePicker from "@components/TimePicker";
   import Header from "@components/Header";
 
   import { STEP_LUNCH_START_URI, HOME_URI } from "@lib/routesURI";
-
-  let timeInput;
-  let inputValue = "8:48";
-
-  onMount(() => {
-    setTimeout(() => {
-      timeInput.focus();
-      timeInput.setSelectionRange(inputValue.length, inputValue.length);
-    }, 500);
-  });
 </script>
 
 <style>
@@ -28,15 +19,9 @@
     color: #fff;
   }
 
-  .ct-init__input {
+  .ct-init :global(.c-timepicker__input) {
     font-size: 159px;
-    max-width: 100%;
     margin-top: 130px;
-    text-align: center;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-weight: 600;
   }
 
   .ct-init__button {
@@ -73,7 +58,10 @@
   <section class="container">
     <h1 class="ct-init__title">Qual sua carga horária diária?</h1>
 
-    <input class="ct-init__input" value={inputValue} bind:this={timeInput} />
+    <TimePicker
+      className="ct-init__timepicker"
+      autoFocus
+      time={{ hours: '08', minutes: '48' }} />
 
     <a href={HOME_URI} class="ct-init__button">Próximo</a>
 
