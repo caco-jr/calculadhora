@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-
+  import IMask from "imask";
   import { imask } from "svelte-imask";
 
   export let time;
@@ -9,10 +9,26 @@
 
   let timeInputRef;
 
-  const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
-
   const options = {
-    mask: "00:00"
+    overwrite: true,
+    autofix: true,
+    mask: "HH:MM",
+    blocks: {
+      HH: {
+        mask: IMask.MaskedRange,
+        placeholderChar: "HH",
+        from: 0,
+        to: 23,
+        maxLength: 2
+      },
+      MM: {
+        mask: IMask.MaskedRange,
+        placeholderChar: "MM",
+        from: 0,
+        to: 59,
+        maxLength: 2
+      }
+    }
   };
 
   let timeString = handleInputValue(time);
@@ -32,10 +48,6 @@
   }
 
   function handleTimeFormat(value) {
-    if (timeRegex.test(value)) {
-      console.log("Passou!!!!");
-    }
-
     const separatedValue = value.split(":");
 
     time = {
