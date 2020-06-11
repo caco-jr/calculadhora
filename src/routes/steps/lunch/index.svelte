@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-  <title>Início do almoço | CalculadHora</title>
+  <title>Almoço | CalculadHora</title>
 </svelte:head>
 
 <LayoutBase title="Almoço:">
