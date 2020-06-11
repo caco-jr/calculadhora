@@ -1,6 +1,11 @@
 <script>
   import LoadSVG from "@components/LoadSVG";
-  import { STEP_INIT_URI, STEP_LUNCH_URI } from "@lib/routesURI";
+  import {
+    STEP_INIT_URI,
+    STEP_LUNCH_URI,
+    STEP_BREAK_URI,
+    STEP_RESULT_URI
+  } from "@lib/routesURI";
 
   export let currentStepNumber = 0;
   let list = handleList();

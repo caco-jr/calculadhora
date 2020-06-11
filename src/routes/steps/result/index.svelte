@@ -4,10 +4,10 @@
 </script>
 
 <svelte:head>
-  <title>Início do almoço | CalculadHora</title>
+  <title>Resultados | CalculadHora</title>
 </svelte:head>
 
-<LayoutBase title="Almoço:">
+<LayoutBase title="Resultado:">
   <section>Hora do almoço</section>
-  <ProgressBar currentStepNumber="1" />
+  <ProgressBar currentStepNumber="3" />
 </LayoutBase>
