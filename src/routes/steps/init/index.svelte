@@ -5,7 +5,7 @@
   import Button from "@components/Button";
   import LayoutBase from "../components/LayoutBase";
 
-  import { STEP_LUNCH_START_URI, HOME_URI } from "@lib/routesURI";
+  import { STEP_LUNCH_START_URI } from "@lib/routesURI";
 </script>
 
 <style>
@@ -34,7 +34,7 @@
       autoFocus
       time={{ hours: '08', minutes: '48' }} />
 
-    <Button tag="a" href={HOME_URI}>Próximo</Button>
+    <Button tag="a" href={STEP_LUNCH_START_URI}>Próximo</Button>
 
     <label class="ct-init__checkbox-box">Realiza pausas além do almoço?</label>
   </section>

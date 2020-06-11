@@ -1,6 +1,7 @@
 <script>
   export let tag = "button";
-  export let href = "";
+  let _href = "";
+  export { _href as href };
 </script>
 
 <style>
@@ -26,7 +27,7 @@
     <slot />
   </button>
 {:else}
-  <a {href} class="c-button">
+  <a href={_href} class="c-button">
     <slot />
   </a>
 {/if}

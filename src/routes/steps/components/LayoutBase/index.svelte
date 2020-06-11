@@ -1,7 +1,7 @@
 <script>
   import Header from "@components/Header";
 
-  let title = "";
+  export let title = "";
 </script>
 
 <style>
