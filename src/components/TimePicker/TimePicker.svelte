@@ -94,7 +94,6 @@
     use:imask={options}
     bind:value={timeString}
     bind:this={timeInputRef}
-    class:className={`${className}__input`}
     class="c-timepicker__input"
     name="time"
     type="text"

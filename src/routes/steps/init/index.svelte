@@ -3,6 +3,7 @@
 
   import TimePicker from "@components/TimePicker";
   import Button from "@components/Button";
+  import ProgressBar from "../components/ProgressBar";
   import LayoutBase from "../components/LayoutBase";
 
   import { STEP_LUNCH_START_URI } from "@lib/routesURI";
@@ -37,5 +38,7 @@
     <Button tag="a" href={STEP_LUNCH_START_URI}>Próximo</Button>
 
     <label class="ct-init__checkbox-box">Realiza pausas além do almoço?</label>
+
+    <ProgressBar currentStepNumber="0" />
   </section>
 </LayoutBase>
