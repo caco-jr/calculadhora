@@ -10,6 +10,10 @@
 </script>
 
 <style>
+  .c-step-config {
+    flex: 1;
+  }
+
   .c-step-config :global(.c-timepicker__input) {
     font-size: 159px;
     margin-top: 130px;
@@ -40,7 +44,7 @@
     <label class="c-step-config__checkbox-box">
       Realiza pausas além do almoço?
     </label>
-
-    <ProgressBar currentStepNumber="0" />
   </section>
+
+  <ProgressBar currentStepNumber="0" />
 </LayoutBase>

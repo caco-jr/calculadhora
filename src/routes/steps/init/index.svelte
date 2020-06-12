@@ -10,6 +10,10 @@
 </script>
 
 <style>
+  .ct-init {
+    flex: 1;
+  }
+
   .ct-init :global(.c-timepicker__input) {
     font-size: 159px;
     margin-top: 130px;
@@ -28,7 +32,7 @@
       time={{ hours: '10', minutes: '00' }} />
 
     <Button tag="a" href={STEP_LUNCH_URI}>Próximo</Button>
-
-    <ProgressBar currentStepNumber="1" />
   </section>
+
+  <ProgressBar currentStepNumber="1" />
 </LayoutBase>

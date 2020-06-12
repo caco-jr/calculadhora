@@ -15,6 +15,17 @@
     font-weight: 600;
     color: #fff;
   }
+
+  .c-layout-base__slot {
+    display: flex;
+    flex-flow: column;
+    padding-bottom: 40px;
+  }
+
+  .c-layout-base > .container,
+  .c-layout-base__slot {
+    min-height: calc(100vh - 200px);
+  }
 </style>
 
 <section class="c-layout-base">
@@ -23,6 +34,8 @@
   <section class="container">
     <h1 class="c-layout-base__title">{title}</h1>
 
-    <slot />
+    <section class="c-layout-base__slot">
+      <slot />
+    </section>
   </section>
 </section>
