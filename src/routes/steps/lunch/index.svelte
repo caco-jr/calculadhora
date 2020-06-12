@@ -10,9 +10,8 @@
 </svelte:head>
 
 <LayoutBase title="Almoço:">
-  <section>Hora do almoço</section>
 
   <Button tag="a" href={STEP_BREAK_URI}>Próximo</Button>
 
-  <ProgressBar currentStepNumber="1" />
+  <ProgressBar currentStepNumber="2" />
 </LayoutBase>

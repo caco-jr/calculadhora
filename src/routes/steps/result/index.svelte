@@ -8,6 +8,5 @@
 </svelte:head>
 
 <LayoutBase title="Resultado:">
-  <section>Hora do almoço</section>
-  <ProgressBar currentStepNumber="3" />
+  <ProgressBar currentStepNumber="4" />
 </LayoutBase>

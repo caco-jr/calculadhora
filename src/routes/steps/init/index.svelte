@@ -14,31 +14,21 @@
     font-size: 159px;
     margin-top: 130px;
   }
-
-  .ct-init__checkbox-box {
-    font-size: 25px;
-    color: #fff;
-    font-weight: 600;
-    display: block;
-    text-align: center;
-  }
 </style>
 
 <svelte:head>
-  <title>Carga Horária | CalculadHora</title>
+  <title>Início | CalculadHora</title>
 </svelte:head>
 
-<LayoutBase title="Qual sua carga horária diária?">
+<LayoutBase title="Início:">
   <section class="ct-init">
     <TimePicker
       className="ct-init__timepicker"
       autoFocus
-      time={{ hours: '08', minutes: '48' }} />
+      time={{ hours: '10', minutes: '00' }} />
 
     <Button tag="a" href={STEP_LUNCH_URI}>Próximo</Button>
 
-    <label class="ct-init__checkbox-box">Realiza pausas além do almoço?</label>
-
-    <ProgressBar currentStepNumber="0" />
+    <ProgressBar currentStepNumber="1" />
   </section>
 </LayoutBase>

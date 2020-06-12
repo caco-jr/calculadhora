@@ -1,5 +1,5 @@
 <script>
-  import { STEP_INIT_URI } from "@lib/routesURI";
+  import { STEP_CONFIG_URI } from "@lib/routesURI";
   import { fly } from "svelte/transition";
 </script>
 
@@ -63,7 +63,7 @@
       <h1 class="ct-landing__title">CalculadHora</h1>
       <span class="ct-landing__sub-title">Você no controle do seu tempo</span>
 
-      <a class="ct-landing__button" href={STEP_INIT_URI}>Iniciar</a>
+      <a class="ct-landing__button" href={STEP_CONFIG_URI}>Iniciar</a>
     </section>
   </section>
 

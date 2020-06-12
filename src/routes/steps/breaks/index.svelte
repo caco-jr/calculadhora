@@ -10,9 +10,7 @@
 </svelte:head>
 
 <LayoutBase title="Pausas:">
-  <section>Apagar</section>
-
   <Button tag="a" href={STEP_RESULT_URI}>Próximo</Button>
 
-  <ProgressBar currentStepNumber="2" />
+  <ProgressBar currentStepNumber="3" />
 </LayoutBase>

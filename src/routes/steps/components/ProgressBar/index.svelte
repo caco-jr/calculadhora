@@ -1,6 +1,7 @@
 <script>
   import LoadSVG from "@components/LoadSVG";
   import {
+    STEP_CONFIG_URI,
     STEP_INIT_URI,
     STEP_LUNCH_URI,
     STEP_BREAK_URI,
@@ -9,7 +10,7 @@
 
   export let currentStepNumber = 0;
   let list = handleList();
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   function handleList() {
     return [...Array(totalSteps)].map((_, index) => {
@@ -18,18 +19,22 @@
 
       switch (index) {
         case 0:
-          uri = STEP_INIT_URI;
+          uri = STEP_CONFIG_URI;
           break;
 
         case 1:
-          uri = STEP_LUNCH_URI;
+          uri = STEP_INIT_URI;
           break;
 
         case 2:
-          uri = STEP_BREAK_URI;
+          uri = STEP_LUNCH_URI;
           break;
 
         case 3:
+          uri = STEP_BREAK_URI;
+          break;
+
+        case 4:
           uri = STEP_RESULT_URI;
           break;
 
@@ -88,15 +93,19 @@
   }
 
   .c-progress__bar[data-current-step="1"]::after {
-    width: calc((100% / 3) * 1);
+    width: calc((100% / 4) * 1);
   }
 
   .c-progress__bar[data-current-step="2"]::after {
-    width: calc((100% / 3) * 2);
+    width: calc((100% / 4) * 2);
   }
 
   .c-progress__bar[data-current-step="3"]::after {
-    width: calc((100% / 3) * 3);
+    width: calc((100% / 4) * 3);
+  }
+
+  .c-progress__bar[data-current-step="4"]::after {
+    width: calc((100% / 4) * 4);
   }
 </style>
 
