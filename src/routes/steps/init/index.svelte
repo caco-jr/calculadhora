@@ -3,8 +3,8 @@
 
   import TimePicker from "@components/TimePicker";
   import Button from "@components/Button";
-  import ProgressBar from "../components/ProgressBar";
-  import LayoutBase from "../components/LayoutBase";
+  import ProgressBar from "@components/ProgressBar";
+  import LayoutBase from "@components/LayoutBase";
 
   import { STEP_LUNCH_URI } from "@lib/routesURI";
 </script>

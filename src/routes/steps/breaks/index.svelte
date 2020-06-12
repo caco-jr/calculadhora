@@ -1,6 +1,6 @@
 <script>
-  import LayoutBase from "../components/LayoutBase";
-  import ProgressBar from "../components/ProgressBar";
+  import LayoutBase from "@components/LayoutBase";
+  import ProgressBar from "@components/ProgressBar";
   import Button from "@components/Button";
   import { STEP_RESULT_URI } from "@lib/routesURI";
 

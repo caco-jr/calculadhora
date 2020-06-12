@@ -2,8 +2,8 @@
   import TimePicker from "@components/TimePicker";
   import Button from "@components/Button";
   import { STEP_BREAK_URI } from "@lib/routesURI";
-  import LayoutBase from "../components/LayoutBase";
-  import ProgressBar from "../components/ProgressBar";
+  import LayoutBase from "@components/LayoutBase";
+  import ProgressBar from "@components/ProgressBar";
 
   let componentClassName = "c-lunch-step";
 </script>
@@ -35,7 +35,7 @@
     margin-right: 14px;
   }
 
-  :global(.c-lunch-timepicker .c-timepicker__input) {
+  .c-lunch-step :global(.c-lunch-timepicker .c-timepicker__input) {
     text-align: left;
     max-width: 170px;
     font-size: 60px;
