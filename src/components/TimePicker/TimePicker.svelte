@@ -6,6 +6,7 @@
   export let time;
   export let autoFocus = false;
   export let className = "";
+  export let onComplete;
 
   let timeInputRef;
 
@@ -35,6 +36,7 @@
 
   function complete({ detail: imask }) {
     handleTimeFormat(imask._value);
+    onComplete(time);
   }
 
   function handleInputValue(timeValue) {

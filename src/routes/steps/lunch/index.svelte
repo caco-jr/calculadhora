@@ -1,4 +1,5 @@
 <script>
+  import { lunchStart, lunchFinish } from "@store";
   import TimePicker from "@components/TimePicker";
   import Button from "@components/Button";
   import { STEP_BREAK_URI } from "@lib/routesURI";
@@ -55,7 +56,8 @@
         <TimePicker
           className="c-lunch-timepicker"
           autoFocus
-          time={{ hours: '10', minutes: '00' }} />
+          time={$lunchStart}
+          onComplete={lunchStart.update} />
       </section>
 
       <section class={`${componentClassName}__box-item`}>
@@ -63,7 +65,8 @@
 
         <TimePicker
           className="c-lunch-timepicker"
-          time={{ hours: '10', minutes: '00' }} />
+          time={$lunchFinish}
+          onComplete={lunchFinish.update} />
       </section>
     </section>
 

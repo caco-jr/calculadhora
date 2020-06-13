@@ -1,3 +1,8 @@
+export const formatTimeObject = (hours, minutes) => ({
+  hours: `${hours}`.padStart(2, 0),
+  minutes: `${minutes}`.padStart(2, 0),
+});
+
 export function convertTime({ hours, minutes }) {
   return new Date().setHours(hours, minutes);
 }

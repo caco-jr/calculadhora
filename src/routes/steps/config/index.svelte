@@ -1,6 +1,7 @@
 <script>
   import { fly } from "svelte/transition";
 
+  import { workload } from "@store";
   import TimePicker from "@components/TimePicker";
   import Button from "@components/Button";
   import ProgressBar from "@components/ProgressBar";
@@ -45,7 +46,8 @@
     <TimePicker
       className="c-step-config__timepicker"
       autoFocus
-      time={{ hours: '08', minutes: '48' }} />
+      time={$workload}
+      onComplete={workload.update} />
 
     <Button className="c-step-config__button" tag="a" href={STEP_INIT_URI}>
       Próximo

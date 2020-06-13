@@ -27,6 +27,7 @@ const aliases = alias({
       replacement: path.resolve(__dirname, 'src/components'),
     },
     { find: '@lib', replacement: path.resolve(__dirname, 'src/lib') },
+    { find: '@store', replacement: path.resolve(__dirname, 'src/store') },
   ],
 });
 

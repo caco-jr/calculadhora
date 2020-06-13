@@ -1,6 +1,7 @@
 <script>
   import { fly } from "svelte/transition";
 
+  import { initTime } from "@store";
   import TimePicker from "@components/TimePicker";
   import Button from "@components/Button";
   import ProgressBar from "@components/ProgressBar";
@@ -37,7 +38,8 @@
     <TimePicker
       className="ct-init__timepicker"
       autoFocus
-      time={{ hours: '10', minutes: '00' }} />
+      time={$initTime}
+      onComplete={initTime.update} />
 
     <Button tag="a" href={STEP_LUNCH_URI} className="ct-init__button">
       Próximo
