@@ -12,14 +12,18 @@
 <style>
   .ct-init {
     flex: 1;
+    text-align: center;
   }
 
   .ct-init :global(.c-timepicker__input) {
-    font-size: 156px;
+    font-size: 110px;
     display: block;
-    margin: 100px auto 20px;
-    max-width: 500px;
-    padding-bottom: 20px;
+    margin: 180px auto 0;
+    max-width: 350px;
+  }
+
+  .ct-init :global(.ct-init__button) {
+    margin: 90px auto 30px;
   }
 </style>
 
@@ -34,7 +38,9 @@
       autoFocus
       time={{ hours: '10', minutes: '00' }} />
 
-    <Button tag="a" href={STEP_LUNCH_URI}>Próximo</Button>
+    <Button tag="a" href={STEP_LUNCH_URI} className="ct-init__button">
+      Próximo
+    </Button>
   </section>
 
   <ProgressBar currentStepNumber="1" />

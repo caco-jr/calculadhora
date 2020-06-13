@@ -12,14 +12,18 @@
 <style>
   .c-finish {
     flex: 1;
+    text-align: center;
   }
 
   .c-finish :global(.c-timepicker__input) {
-    font-size: 156px;
+    font-size: 110px;
     display: block;
-    margin: 100px auto 20px;
-    max-width: 500px;
-    padding-bottom: 20px;
+    margin: 180px auto 0;
+    max-width: 350px;
+  }
+
+  .c-finish :global(.c-finish__button) {
+    margin: 90px auto 30px;
   }
 </style>
 
@@ -34,7 +38,9 @@
       autoFocus
       time={{ hours: '19', minutes: '48' }} />
 
-    <Button tag="a" href={STEP_RESULT_URI}>Concluir</Button>
+    <Button tag="a" href={STEP_RESULT_URI} className="c-finish__button">
+      Concluir
+    </Button>
   </section>
 
   <ProgressBar currentStepNumber="4" />

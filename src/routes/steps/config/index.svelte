@@ -12,18 +12,22 @@
 <style>
   .c-step-config {
     flex: 1;
+    text-align: center;
   }
 
   .c-step-config :global(.c-timepicker__input) {
-    font-size: 156px;
+    font-size: 110px;
     display: block;
-    margin: 100px auto 20px;
-    max-width: 500px;
-    padding-bottom: 20px;
+    margin: 180px auto 0;
+    max-width: 350px;
+  }
+
+  .c-step-config :global(.c-step-config__button) {
+    margin: 90px auto 30px;
   }
 
   .c-step-config__checkbox-box {
-    font-size: 25px;
+    font-size: 20px;
     color: #fff;
     font-weight: 600;
     display: block;
@@ -42,7 +46,9 @@
       autoFocus
       time={{ hours: '08', minutes: '48' }} />
 
-    <Button tag="a" href={STEP_INIT_URI}>Próximo</Button>
+    <Button className="c-step-config__button" tag="a" href={STEP_INIT_URI}>
+      Próximo
+    </Button>
 
     <label class="c-step-config__checkbox-box">
       Realiza pausas além do almoço?

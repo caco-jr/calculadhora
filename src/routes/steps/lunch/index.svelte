@@ -11,6 +11,7 @@
 <style>
   .c-lunch-step {
     flex: 1;
+    text-align: center;
   }
 
   .c-lunch-step__box {
@@ -66,7 +67,12 @@
       </section>
     </section>
 
-    <Button tag="a" href={STEP_BREAK_URI}>Próximo</Button>
+    <Button
+      tag="a"
+      href={STEP_BREAK_URI}
+      className={`${componentClassName}__button`}>
+      Próximo
+    </Button>
   </section>
 
   <ProgressBar currentStepNumber="2" />

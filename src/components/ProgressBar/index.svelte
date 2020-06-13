@@ -67,10 +67,16 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
+    transform: scale(1);
+    transition: 0.3s all ease;
   }
 
   .c-progress__circle--active {
     border: 2px solid #fff;
+  }
+
+  .c-progress__circle--active:hover {
+    transform: scale(1.2);
   }
 
   .c-progress__bar {
