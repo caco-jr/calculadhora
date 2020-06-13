@@ -20,6 +20,10 @@
     transition: 0.3s all ease;
     border: none;
   }
+
+  .c-button:hover {
+    background-color: var(--light-secondary-color);
+  }
 </style>
 
 {#if tag === 'button'}

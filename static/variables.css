@@ -57,6 +57,7 @@
   --secondary-color-800: rgba(244, 110, 104, 0.8);
   --secondary-color-1000: rgba(244, 110, 104, 1);
   --secondary-color: var(--secondary-color-1000);
+  --light-secondary-color: #f5807a;
   /* ----- */
   --tertiary-color: #2a3942;
   --dark-tertiary-color: #2a3942;
