@@ -2,7 +2,7 @@
   import LayoutBase from "@components/LayoutBase";
   import ProgressBar from "@components/ProgressBar";
   import Button from "@components/Button";
-  import { STEP_RESULT_URI } from "@lib/routesURI";
+  import { STEP_FINISH_URI } from "@lib/routesURI";
 
   let componentClassName = "c-step-breaks";
 </script>
@@ -19,7 +19,7 @@
 
 <LayoutBase title="Pausas:">
   <section class={componentClassName}>
-    <Button tag="a" href={STEP_RESULT_URI}>Próximo</Button>
+    <Button tag="a" href={STEP_FINISH_URI}>Próximo</Button>
   </section>
 
   <ProgressBar currentStepNumber="3" />

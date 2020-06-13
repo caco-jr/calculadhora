@@ -5,7 +5,7 @@
     STEP_INIT_URI,
     STEP_LUNCH_URI,
     STEP_BREAK_URI,
-    STEP_RESULT_URI
+    STEP_FINISH_URI
   } from "@lib/routesURI";
 
   export let currentStepNumber = 0;
@@ -35,7 +35,7 @@
           break;
 
         case 4:
-          uri = STEP_RESULT_URI;
+          uri = STEP_FINISH_URI;
           break;
 
         default:

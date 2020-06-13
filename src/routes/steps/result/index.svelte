@@ -17,5 +17,4 @@
 
 <LayoutBase title="Resultado:">
   <section class={componentClassName}>Olá</section>
-  <ProgressBar currentStepNumber="4" />
 </LayoutBase>
