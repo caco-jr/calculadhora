@@ -29,7 +29,7 @@
   }
 
   .c-lunch-step__box-text {
-    color: #fff;
+    color: var(--complementary-color-03);
     font-size: 26px;
     font-weight: 600;
     margin-right: 14px;
