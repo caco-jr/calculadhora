@@ -16,14 +16,14 @@
     blocks: {
       HH: {
         mask: IMask.MaskedRange,
-        placeholderChar: "HH",
+        placeholderChar: "H",
         from: 0,
         to: 23,
         maxLength: 2
       },
       MM: {
         mask: IMask.MaskedRange,
-        placeholderChar: "MM",
+        placeholderChar: "M",
         from: 0,
         to: 59,
         maxLength: 2
@@ -82,6 +82,17 @@
     color: #fff;
     font-weight: 600;
     font-size: 26px;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+    transition: 0.3s all ease;
+  }
+
+  .c-timepicker__input:hover {
+    border-color: rgb(255, 255, 255, 0.6);
+  }
+
+  .c-timepicker__input:focus {
+    border-color: rgb(255, 255, 255, 1);
   }
 
   .c-timepicker__input::placeholder {

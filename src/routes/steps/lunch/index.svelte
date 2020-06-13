@@ -25,7 +25,7 @@
   }
 
   .c-lunch-step__box-item:first-child {
-    margin-right: 30px;
+    margin-right: 60px;
   }
 
   .c-lunch-step__box-text {
@@ -36,8 +36,7 @@
   }
 
   .c-lunch-step :global(.c-lunch-timepicker .c-timepicker__input) {
-    text-align: left;
-    max-width: 170px;
+    max-width: 190px;
     font-size: 60px;
   }
 </style>

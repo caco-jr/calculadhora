@@ -15,8 +15,11 @@
   }
 
   .c-step-config :global(.c-timepicker__input) {
-    font-size: 159px;
-    margin-top: 130px;
+    font-size: 156px;
+    display: block;
+    margin: 100px auto 20px;
+    max-width: 500px;
+    padding-bottom: 20px;
   }
 
   .c-step-config__checkbox-box {
