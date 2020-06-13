@@ -20,6 +20,7 @@
     display: block;
     margin: 180px auto 0;
     max-width: 350px;
+    padding-bottom: 16px;
   }
 
   .c-step-config :global(.c-step-config__button) {
