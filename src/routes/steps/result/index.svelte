@@ -109,7 +109,7 @@
 
 <LayoutBase title="Resultado:">
   <section class={componentClassName}>
-    <h2 class={`${componentClassName}__title`}>você está negativo!</h2>
+    <!-- <h2 class={`${componentClassName}__title`}>você está negativo!</h2> -->
 
     <p class={`${componentClassName}__text`}>
       <span class={`${componentClassName}__text-marked`}>
@@ -130,9 +130,9 @@
       {formatTimeString($workload)}
     </p>
 
-    <p class={`${componentClassName}__text`}>
+    <!-- <p class={`${componentClassName}__text`}>
       <span class={`${componentClassName}__text-marked`}>Banco de Horas:</span>
       00:40
-    </p>
+    </p> -->
   </section>
 </LayoutBase>
