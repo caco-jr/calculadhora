@@ -1,5 +1,5 @@
 <script>
-  import { formatTimeString } from "@lib/date";
+  import { difference, convertTime, formatTimeString } from "@lib/date";
   import LayoutBase from "@components/LayoutBase";
   import ProgressBar from "@components/ProgressBar";
   import {
@@ -11,6 +11,67 @@
   } from "@store";
 
   let componentClassName = "c-step-result";
+
+  $: timeToFinish = handleTimeToFinish($initTime, $lunchStart, $finishTime);
+
+  $: fullTimeWorked = handleFullTimeWorked($initTime)
+    .addTime($lunchStart)
+    .addTime($lunchFinish)
+    .finish($finishTime).total;
+
+  function handleTimeToFinish(entry, pause1, pauseReturn1) {
+    const datePlus = new Date(convertTime(entry));
+    const breakTime = new Date(convertTime(difference(pause1, pauseReturn1)));
+    datePlus.addHours(breakTime.getHours() + 8, breakTime.getMinutes() + 48);
+
+    const handleTimeObj = date => ({
+      hours: date.getHours(),
+      minutes: date.getMinutes()
+    });
+
+    return handleTimeObj(datePlus);
+  }
+
+  const handleFullTimeWorked = (a, finish) => {
+    let total;
+    let list = [...[a]].flat(Infinity);
+    let diff = [];
+
+    if (list.length >= 2 && finish) {
+      while (list.length >= 2) {
+        let cutList = list.splice(0, 2);
+        diff = [...diff, difference(cutList[0], cutList[1])];
+      }
+
+      total = diff.reduce(
+        (accumulator, currentValue) => {
+          const hours = Number(currentValue.hours) + accumulator.hours;
+          const minutes = Number(currentValue.minutes) + accumulator.minutes;
+
+          if (minutes > 59) {
+            return {
+              hours: hours + 1,
+              minutes: minutes - 60
+            };
+          }
+
+          return {
+            hours,
+            minutes
+          };
+        },
+        { hours: 0, minutes: 0 }
+      );
+    }
+
+    return {
+      total,
+      periods: diff,
+      leftovers: list,
+      addTime: b => handleFullTimeWorked([...[a], b]),
+      finish: b => handleFullTimeWorked([...[a], b], true)
+    };
+  };
 </script>
 
 <style>
@@ -30,7 +91,7 @@
 
     <p>
       <span>Horas trabalhadas:</span>
-      08:00
+      {formatTimeString(fullTimeWorked)}
     </p>
 
     <p>
@@ -40,7 +101,7 @@
 
     <p>
       <span>Horário previsto saída:</span>
-      18:00
+      {formatTimeString(timeToFinish)}
     </p>
 
     <p>
