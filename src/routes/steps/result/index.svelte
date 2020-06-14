@@ -1,4 +1,7 @@
 <script>
+  import { formatTimeString } from "@lib/date";
+  import LayoutBase from "@components/LayoutBase";
+  import ProgressBar from "@components/ProgressBar";
   import {
     workload,
     initTime,
@@ -6,9 +9,6 @@
     lunchFinish,
     finishTime
   } from "@store";
-  import { formatTimeString } from "@lib/date";
-  import LayoutBase from "@components/LayoutBase";
-  import ProgressBar from "@components/ProgressBar";
 
   let componentClassName = "c-step-result";
 </script>
