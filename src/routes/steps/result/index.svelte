@@ -1,4 +1,12 @@
 <script>
+  import {
+    workload,
+    initTime,
+    lunchStart,
+    lunchFinish,
+    finishTime
+  } from "@store";
+  import { formatTimeString } from "@lib/date";
   import LayoutBase from "@components/LayoutBase";
   import ProgressBar from "@components/ProgressBar";
 
@@ -16,5 +24,28 @@
 </svelte:head>
 
 <LayoutBase title="Resultado:">
-  <section class={componentClassName}>Olá</section>
+  <section class={componentClassName}>
+    <h2>você está negativo!</h2>
+    <p>que tal trabalhar mais um pouquinho?</p>
+
+    <p>
+      <span>Horas trabalhadas:</span>
+      08:00
+    </p>
+
+    <p>
+      <span>Carga horária:</span>
+      {formatTimeString($workload)}
+    </p>
+
+    <p>
+      <span>Horário previsto saída:</span>
+      18:00
+    </p>
+
+    <p>
+      <span>Banco de Horas:</span>
+      00:40
+    </p>
+  </section>
 </LayoutBase>

@@ -3,6 +3,8 @@
   import IMask from "imask";
   import { imask } from "svelte-imask";
 
+  import { formatTimeString } from "@lib/date";
+
   export let time;
   export let autoFocus = false;
   export let className = "";
@@ -44,9 +46,7 @@
       return "00:00";
     }
 
-    return `${timeValue.hours.toString().padStart(2, "0")}:${
-      timeValue.minutes
-    }`;
+    return formatTimeString(timeValue);
   }
 
   function handleTimeFormat(value) {
