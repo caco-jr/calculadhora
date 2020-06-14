@@ -1,5 +1,10 @@
 <script>
-  import { difference, convertTime, formatTimeString } from "@lib/date";
+  import {
+    difference,
+    convertTime,
+    formatTimeString,
+    formatTimeObject
+  } from "@lib/date";
   import LayoutBase from "@components/LayoutBase";
   import ProgressBar from "@components/ProgressBar";
   import {
@@ -14,7 +19,7 @@
 
   $: timeToFinish = handleTimeToFinish($initTime, $lunchStart, $lunchFinish);
 
-  $: fullTimeWorked = handleFullTimeWorked($initTime)
+  $: fullTimeWorked = handleTotalTimeWorked($initTime)
     .addTime($lunchStart)
     .addTime($lunchFinish)
     .finish($finishTime)
@@ -25,16 +30,10 @@
     const breakTime = new Date(convertTime(difference(pause1, pauseReturn1)));
 
     datePlus.addHours(breakTime.getHours() + 8, breakTime.getMinutes() + 48);
-
-    const handleTimeObj = date => ({
-      hours: date.getHours(),
-      minutes: date.getMinutes()
-    });
-
-    return handleTimeObj(datePlus);
+    return formatTimeObject(datePlus.getHours(), datePlus.getMinutes());
   }
 
-  const handleFullTimeWorked = (a, finish) => {
+  const handleTotalTimeWorked = (a, finish) => {
     let total;
     let list = [...[a]].flat(Infinity);
     let diff = [];
@@ -70,8 +69,8 @@
       getTotal: () => total,
       periods: diff,
       leftovers: list,
-      addTime: b => handleFullTimeWorked([...[a], b]),
-      finish: b => handleFullTimeWorked([...[a], b], true)
+      addTime: b => handleTotalTimeWorked([...[a], b]),
+      finish: b => handleTotalTimeWorked([...[a], b], true)
     };
   };
 </script>

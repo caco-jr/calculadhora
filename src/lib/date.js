@@ -13,10 +13,7 @@ export function convertTime({ hours, minutes }) {
 export function difference(start, end) {
   const dateDiff = new Date(convertTime(end) - convertTime(start));
 
-  return {
-    hours: dateDiff.getUTCHours(),
-    minutes: dateDiff.getUTCMinutes(),
-  };
+  return formatTimeObject(dateDiff.getUTCHours(), dateDiff.getUTCMinutes());
 }
 
 Date.prototype.addHours = function (hours, minutes) {
