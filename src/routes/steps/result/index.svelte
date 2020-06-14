@@ -17,7 +17,8 @@
   $: fullTimeWorked = handleFullTimeWorked($initTime)
     .addTime($lunchStart)
     .addTime($lunchFinish)
-    .finish($finishTime).total;
+    .finish($finishTime)
+    .getTotal();
 
   function handleTimeToFinish(entry, pause1, pauseReturn1) {
     const datePlus = new Date(convertTime(entry));
@@ -65,7 +66,7 @@
     }
 
     return {
-      total,
+      getTotal: () => total,
       periods: diff,
       leftovers: list,
       addTime: b => handleFullTimeWorked([...[a], b]),
