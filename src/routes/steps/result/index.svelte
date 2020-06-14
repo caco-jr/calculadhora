@@ -12,7 +12,7 @@
 
   let componentClassName = "c-step-result";
 
-  $: timeToFinish = handleTimeToFinish($initTime, $lunchStart, $finishTime);
+  $: timeToFinish = handleTimeToFinish($initTime, $lunchStart, $lunchFinish);
 
   $: fullTimeWorked = handleFullTimeWorked($initTime)
     .addTime($lunchStart)
@@ -23,6 +23,7 @@
   function handleTimeToFinish(entry, pause1, pauseReturn1) {
     const datePlus = new Date(convertTime(entry));
     const breakTime = new Date(convertTime(difference(pause1, pauseReturn1)));
+
     datePlus.addHours(breakTime.getHours() + 8, breakTime.getMinutes() + 48);
 
     const handleTimeObj = date => ({
@@ -113,6 +114,13 @@
 
     <p class={`${componentClassName}__text`}>
       <span class={`${componentClassName}__text-marked`}>
+        Horário previsto de saída:
+      </span>
+      {formatTimeString(timeToFinish)}
+    </p>
+
+    <p class={`${componentClassName}__text`}>
+      <span class={`${componentClassName}__text-marked`}>
         Horas trabalhadas:
       </span>
       {formatTimeString(fullTimeWorked)}
@@ -121,13 +129,6 @@
     <p class={`${componentClassName}__text`}>
       <span class={`${componentClassName}__text-marked`}>Carga horária:</span>
       {formatTimeString($workload)}
-    </p>
-
-    <p class={`${componentClassName}__text`}>
-      <span class={`${componentClassName}__text-marked`}>
-        Horário previsto saída:
-      </span>
-      {formatTimeString(timeToFinish)}
     </p>
 
     <p class={`${componentClassName}__text`}>
