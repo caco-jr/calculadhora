@@ -78,6 +78,28 @@
   .c-step-result {
     flex: 1;
   }
+
+  .c-step-result__title {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 600;
+    margin: 60px 0 90px;
+  }
+
+  .c-step-result__text,
+  .c-step-result__text-marked {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .c-step-result__text {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .c-step-result__text-marked {
+    color: var(--secondary-color);
+  }
 </style>
 
 <svelte:head>
@@ -86,26 +108,29 @@
 
 <LayoutBase title="Resultado:">
   <section class={componentClassName}>
-    <h2>você está negativo!</h2>
-    <p>que tal trabalhar mais um pouquinho?</p>
+    <h2 class={`${componentClassName}__title`}>você está negativo!</h2>
 
-    <p>
-      <span>Horas trabalhadas:</span>
+    <p class={`${componentClassName}__text`}>
+      <span class={`${componentClassName}__text-marked`}>
+        Horas trabalhadas:
+      </span>
       {formatTimeString(fullTimeWorked)}
     </p>
 
-    <p>
-      <span>Carga horária:</span>
+    <p class={`${componentClassName}__text`}>
+      <span class={`${componentClassName}__text-marked`}>Carga horária:</span>
       {formatTimeString($workload)}
     </p>
 
-    <p>
-      <span>Horário previsto saída:</span>
+    <p class={`${componentClassName}__text`}>
+      <span class={`${componentClassName}__text-marked`}>
+        Horário previsto saída:
+      </span>
       {formatTimeString(timeToFinish)}
     </p>
 
-    <p>
-      <span>Banco de Horas:</span>
+    <p class={`${componentClassName}__text`}>
+      <span class={`${componentClassName}__text-marked`}>Banco de Horas:</span>
       00:40
     </p>
   </section>
