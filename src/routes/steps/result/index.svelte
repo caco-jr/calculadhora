@@ -83,6 +83,8 @@
 <style>
   .c-step-result {
     flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
   }
 
   .c-step-result__title,
@@ -119,6 +121,10 @@
   .c-step-result__text-marked {
     color: var(--secondary-color);
   }
+
+  .c-step-result__image {
+    margin-top: 90px;
+  }
 </style>
 
 <svelte:head>
@@ -127,38 +133,55 @@
 
 <LayoutBase title="Resultado:">
   <section class={componentClassName}>
-    <h2 class={`${componentClassName}__title`}>
-      você está
-      <span
-        class={`${componentClassName}__title-marked ${componentClassName}__title-marked--${bankOfHours.status}`}>
-        {#if bankOfHours.status === 'positive'}positivo{:else}negativo{/if}
-      </span>
-      !
-    </h2>
+    <section>
+      <h2 class={`${componentClassName}__title`}>
+        você está
+        <span
+          class={`${componentClassName}__title-marked ${componentClassName}__title-marked--${bankOfHours.status}`}>
+          {#if bankOfHours.status === 'positive'}positivo{:else}negativo{/if}
+        </span>
+        !
+      </h2>
 
-    <p class={`${componentClassName}__text`}>
-      <span class={`${componentClassName}__text-marked`}>
-        Horário previsto de saída:
-      </span>
-      {formatTimeString(timeToFinish)}
-    </p>
+      <p class={`${componentClassName}__text`}>
+        <span class={`${componentClassName}__text-marked`}>
+          Horário previsto de saída:
+        </span>
+        {formatTimeString(timeToFinish)}
+      </p>
 
-    <p class={`${componentClassName}__text`}>
-      <span class={`${componentClassName}__text-marked`}>
-        Horas trabalhadas:
-      </span>
-      {formatTimeString(fullTimeWorked)}
-    </p>
+      <p class={`${componentClassName}__text`}>
+        <span class={`${componentClassName}__text-marked`}>
+          Horas trabalhadas:
+        </span>
+        {formatTimeString(fullTimeWorked)}
+      </p>
 
-    <p class={`${componentClassName}__text`}>
-      <span class={`${componentClassName}__text-marked`}>Carga horária:</span>
-      {formatTimeString($workload)}
-    </p>
+      <p class={`${componentClassName}__text`}>
+        <span class={`${componentClassName}__text-marked`}>Carga horária:</span>
+        {formatTimeString($workload)}
+      </p>
 
-    <p class={`${componentClassName}__text`}>
-      <span class={`${componentClassName}__text-marked`}>Banco de Horas:</span>
-      {#if bankOfHours.status === 'negative'}-{/if}
-      {formatTimeString(bankOfHours)}
-    </p>
+      <p class={`${componentClassName}__text`}>
+        <span class={`${componentClassName}__text-marked`}>
+          Banco de Horas:
+        </span>
+        {#if bankOfHours.status === 'negative'}-{/if}
+        {formatTimeString(bankOfHours)}
+      </p>
+    </section>
+
+    {#if bankOfHours.status === 'positive'}
+      <img
+        src="images/success-person.svg"
+        alt="person"
+        class={`${componentClassName}__image`} />
+    {:else}
+      <img
+        src="images/working-person.svg"
+        alt="person"
+        class={`${componentClassName}__image`} />
+    {/if}
+
   </section>
 </LayoutBase>
