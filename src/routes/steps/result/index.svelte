@@ -17,7 +17,12 @@
 
   let componentClassName = "c-step-result";
 
-  $: timeToFinish = handleTimeToFinish($initTime, $lunchStart, $lunchFinish);
+  $: timeToFinish = handleTimeToFinish(
+    $initTime,
+    $lunchStart,
+    $lunchFinish,
+    $workload
+  );
 
   $: fullTimeWorked = handleTotalTimeWorked($initTime)
     .addTime($lunchStart)
@@ -35,11 +40,14 @@
     return { ...difference(totalTime, _workload), status: "negative" };
   }
 
-  function handleTimeToFinish(entry, pause1, pauseReturn1) {
+  function handleTimeToFinish(entry, pause1, pauseReturn1, _workload) {
     const datePlus = new Date(convertTime(entry));
     const breakTime = new Date(convertTime(difference(pause1, pauseReturn1)));
 
-    datePlus.addHours(breakTime.getHours() + 8, breakTime.getMinutes() + 48);
+    datePlus.addHours(
+      breakTime.getHours() + Number(_workload.hours),
+      breakTime.getMinutes() + Number(_workload.minutes)
+    );
     return formatTimeObject(datePlus.getHours(), datePlus.getMinutes());
   }
 
