@@ -25,6 +25,16 @@
     .finish($finishTime)
     .getTotal();
 
+  $: bankOfHours = handleBankOfHours(fullTimeWorked, $workload);
+
+  function handleBankOfHours(totalTime, _workload) {
+    if (convertTime(_workload) < convertTime(totalTime)) {
+      return { ...difference(_workload, totalTime), status: "positive" };
+    }
+
+    return { ...difference(totalTime, _workload), status: "negative" };
+  }
+
   function handleTimeToFinish(entry, pause1, pauseReturn1) {
     const datePlus = new Date(convertTime(entry));
     const breakTime = new Date(convertTime(difference(pause1, pauseReturn1)));
@@ -46,20 +56,15 @@
 
       total = diff.reduce(
         (accumulator, currentValue) => {
-          const hours = Number(currentValue.hours) + accumulator.hours;
-          const minutes = Number(currentValue.minutes) + accumulator.minutes;
+          const hours = Number(currentValue.hours) + Number(accumulator.hours);
+          const minutes =
+            Number(currentValue.minutes) + Number(accumulator.minutes);
 
           if (minutes > 59) {
-            return {
-              hours: hours + 1,
-              minutes: minutes - 60
-            };
+            return formatTimeObject(hours + 1, minutes - 60);
           }
 
-          return {
-            hours,
-            minutes
-          };
+          return formatTimeObject(hours, minutes);
         },
         { hours: 0, minutes: 0 }
       );
@@ -80,11 +85,24 @@
     flex: 1;
   }
 
-  .c-step-result__title {
+  .c-step-result__title,
+  .c-step-result__title-marked {
     color: #fff;
     font-size: 60px;
     font-weight: 600;
     margin: 60px 0 90px;
+  }
+
+  .c-step-result__title-marked {
+    font-weight: 700;
+  }
+
+  .c-step-result__title-marked--negative {
+    color: var(--secondary-color);
+  }
+
+  .c-step-result__title-marked--positive {
+    color: #00ff88;
   }
 
   .c-step-result__text,
@@ -109,7 +127,14 @@
 
 <LayoutBase title="Resultado:">
   <section class={componentClassName}>
-    <!-- <h2 class={`${componentClassName}__title`}>você está negativo!</h2> -->
+    <h2 class={`${componentClassName}__title`}>
+      você está
+      <span
+        class={`${componentClassName}__title-marked ${componentClassName}__title-marked--${bankOfHours.status}`}>
+        {#if bankOfHours.status === 'positive'}positivo{:else}negativo{/if}
+      </span>
+      !
+    </h2>
 
     <p class={`${componentClassName}__text`}>
       <span class={`${componentClassName}__text-marked`}>
@@ -130,9 +155,10 @@
       {formatTimeString($workload)}
     </p>
 
-    <!-- <p class={`${componentClassName}__text`}>
+    <p class={`${componentClassName}__text`}>
       <span class={`${componentClassName}__text-marked`}>Banco de Horas:</span>
-      00:40
-    </p> -->
+      {#if bankOfHours.status === 'negative'}-{/if}
+      {formatTimeString(bankOfHours)}
+    </p>
   </section>
 </LayoutBase>
