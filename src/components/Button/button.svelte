@@ -8,7 +8,7 @@
 <style>
   .c-button {
     background-color: var(--secondary-color);
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 600;
     padding: 12px 60px;
     border-radius: 42px;

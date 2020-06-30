@@ -11,7 +11,7 @@
   }
 
   .c-layout-base__title {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 600;
     color: #fff;
   }
