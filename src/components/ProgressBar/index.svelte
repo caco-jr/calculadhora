@@ -55,7 +55,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    margin: 30px 0;
+    margin: 60px 0 30px;
   }
 
   .c-progress__circle {
