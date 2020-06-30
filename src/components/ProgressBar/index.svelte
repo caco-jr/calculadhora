@@ -1,12 +1,12 @@
 <script>
-  import LoadSVG from '@components/LoadSVG';
+  import LoadSVG from "@components/LoadSVG";
   import {
     STEP_CONFIG_URI,
     STEP_INIT_URI,
     STEP_LUNCH_URI,
     STEP_BREAK_URI,
-    STEP_FINISH_URI,
-  } from '@lib/routesURI';
+    STEP_FINISH_URI
+  } from "@lib/routesURI";
 
   export let currentStepNumber = 0;
   let list = handleList();
@@ -44,7 +44,7 @@
 
       return {
         active,
-        uri,
+        uri
       };
     });
   }
@@ -55,6 +55,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+    margin: 30px 0;
   }
 
   .c-progress__circle {
@@ -91,7 +92,7 @@
   }
 
   .c-progress__bar::after {
-    content: '';
+    content: "";
     background-color: #fff;
     height: 100%;
     display: inline-block;
