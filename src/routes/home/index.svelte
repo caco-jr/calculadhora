@@ -1,11 +1,12 @@
 <script>
-  import { STEP_CONFIG_URI } from '@lib/routesURI';
-  import { fly } from 'svelte/transition';
+  import { STEP_CONFIG_URI } from "@lib/routesURI";
+  import { fly } from "svelte/transition";
 </script>
 
 <style>
   .ct-landing {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     min-height: 100vh;
     position: relative;
@@ -29,6 +30,7 @@
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 40px;
+    text-align: center;
   }
 
   .ct-landing__button {
@@ -47,6 +49,29 @@
     max-width: 65%;
     position: absolute;
     right: 0;
+  }
+
+  @media (max-width: 768px) {
+    .ct-landing__content-box {
+      display: flex;
+      margin-top: 100px;
+    }
+
+    .ct-landing__image {
+      position: relative;
+      max-width: 100%;
+      max-height: 365px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .ct-landing__title {
+      font-size: 36px;
+    }
+
+    .ct-landing__sub-title {
+      font-size: 16px;
+    }
   }
 </style>
 
