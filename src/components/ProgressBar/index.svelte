@@ -1,12 +1,12 @@
 <script>
-  import LoadSVG from "@components/LoadSVG";
+  import LoadSVG from '@components/LoadSVG';
   import {
     STEP_CONFIG_URI,
     STEP_INIT_URI,
     STEP_LUNCH_URI,
     STEP_BREAK_URI,
-    STEP_FINISH_URI
-  } from "@lib/routesURI";
+    STEP_FINISH_URI,
+  } from '@lib/routesURI';
 
   export let currentStepNumber = 0;
   let list = handleList();
@@ -44,7 +44,7 @@
 
       return {
         active,
-        uri
+        uri,
       };
     });
   }
@@ -91,27 +91,12 @@
   }
 
   .c-progress__bar::after {
-    content: "";
+    content: '';
     background-color: #fff;
     height: 100%;
     display: inline-block;
     position: absolute;
-  }
-
-  .c-progress__bar[data-current-step="1"]::after {
-    width: calc((100% / 4) * 1);
-  }
-
-  .c-progress__bar[data-current-step="2"]::after {
-    width: calc((100% / 4) * 2);
-  }
-
-  .c-progress__bar[data-current-step="3"]::after {
-    width: calc((100% / 4) * 3);
-  }
-
-  .c-progress__bar[data-current-step="4"]::after {
-    width: calc((100% / 4) * 4);
+    width: calc((100% / var(--total-step)) * var(--current-step));
   }
 </style>
 
@@ -126,5 +111,7 @@
     {/if}
   {/each}
 
-  <span class="c-progress__bar" data-current-step={currentStepNumber} />
+  <span
+    class="c-progress__bar"
+    style={`--current-step: ${currentStepNumber}; --total-step: ${list.length - 1}`} />
 </section>
