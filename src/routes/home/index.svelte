@@ -1,6 +1,6 @@
 <script>
-  import { STEP_CONFIG_URI } from "@lib/routesURI";
-  import { fly } from "svelte/transition";
+  import { STEP_CONFIG_URI } from '@lib/routesURI';
+  import { fly } from 'svelte/transition';
 </script>
 
 <style>
@@ -20,13 +20,13 @@
   }
 
   .ct-landing__title {
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 900;
     margin: 0;
   }
 
   .ct-landing__sub-title {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 40px;
   }
@@ -36,15 +36,15 @@
       0% no-repeat padding-box;
     border-radius: 42px;
     font-weight: 600;
-    font-size: 26px;
+    font-size: 20px;
     color: #fff;
-    padding: 19px 120px;
+    padding: 12px 50px;
     border: none;
     text-decoration: none;
   }
 
   .ct-landing__image {
-    max-width: 60%;
+    max-width: 65%;
     position: absolute;
     right: 0;
   }
