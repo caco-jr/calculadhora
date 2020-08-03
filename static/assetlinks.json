@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "app.calculadhora.twa",
+                   "sha256_cert_fingerprints": ["ED:31:70:CA:44:49:F5:66:E8:DD:8E:9A:57:6C:4F:98:B9:B4:BC:D5:1F:41:CD:B7:09:48:57:3B:07:08:34:17"] }
+    }]
